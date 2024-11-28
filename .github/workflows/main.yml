@@ -19,6 +19,7 @@ jobs:
         Set-PSRepository PSGallery -InstallationPolicy Trusted
         Install-Module -Name ps2exe -Repository PSGallery
         Get-Module ps2exe -ListAvailable
+      shell: powershell
     - name: Convert to EXE
       run: >-
         Invoke-ps2exe 
@@ -33,3 +34,4 @@ jobs:
         -version '1.0.0.0' 
         -noOutput 
         -noError
+      shell: powershell
