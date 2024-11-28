@@ -20,7 +20,7 @@ jobs:
         Install-Module -Name ps2exe -Repository PSGallery
         Get-Module ps2exe -ListAvailable
     - name: Convert to EXE
-      run: >
+      run: >-
         Invoke-ps2exe 
         -inputFile .\LAPS_Password_Finder.ps1 
         -iconFile .\LAPS_PWF_Projekt-Icon.ico 
