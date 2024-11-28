@@ -16,9 +16,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install PS2EXE
       run: |
-        Install-PackageProvider NuGet -Force;
         Set-PSRepository PSGallery -InstallationPolicy Trusted
         Install-Module -Name ps2exe -Repository PSGallery
+        Get-PSRepository
     - name: Convert to EXE
       run: >
         ps2exe 
