@@ -16,7 +16,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install PS2EXE
       run: |
-        Install-Module -Name ps2exe -Quiet
+        Set-PSRepository PSGallery -InstallationPolicy Trusted
+        Install-Module -Name ps2exe -Repository PSGallery
     - name: Convert to EXE
       run: >
         ps2exe 
