@@ -21,7 +21,7 @@ jobs:
         Get-PSRepository
     - name: Convert to EXE
       run: >
-        ps2exe 
+        Invoke-ps2exe 
         -inputFile .\LAPS_Password_Finder.ps1 
         -iconFile .\LAPS_PWF_Projekt-Icon.ico 
         -outputFile '.\LAPS Password Finder.exe' 
