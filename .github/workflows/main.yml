@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install PS2EXE
       run: |
-        Install-Module -Name ps2exe
+        Install-Module -Name ps2exe -Confirm
     - name: Convert to EXE
       run: >
         ps2exe 
