@@ -1,0 +1,37 @@
+---
+name: Build and Convert PowerShell Script
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install PS2EXE
+      run: |
+        Set-PSRepository PSGallery -InstallationPolicy Trusted
+        Install-Module -Name ps2exe -Repository PSGallery
+        Get-Module ps2exe -ListAvailable
+      shell: powershell
+    - name: Convert to EXE
+      run: >-
+        Invoke-ps2exe 
+        -inputFile .\LAPS_Password_Finder.ps1 
+        -iconFile .\LAPS_PWF_Projekt-Icon.ico 
+        -outputFile '.\LAPS Password Finder.exe' 
+        -noConsole 
+        -description 'Search engine for LAPS passwords' 
+        -company 'UBFFM' 
+        -product 'LAPS Password Finder' 
+        -copyright 'UBFFM, Louis Gleim - 2024' 
+        -version '1.0.0.0' 
+        -noOutput 
+        -noError
+      shell: powershell
